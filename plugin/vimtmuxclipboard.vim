@@ -47,7 +47,7 @@ endfunc
 func! s:update_from_tmux()
     let buffer_name = s:TmuxBufferName()
     if s:lastbname != buffer_name
-        let @" = s:TmuxBuffer()
+        let @" = substitute(s:TmuxBuffer(), "\x1b.*\x07", "", "")
     endif
     let s:lastbname=s:TmuxBufferName()
 endfunc
